@@ -1,0 +1,22 @@
+{
+  "name": "nodejs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:dev1": "set NODE_ENV=dev1&& node index.js",
+    "start:test1": "set NODE_ENV=test1&& node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "config": "^2.0.1",
+    "json-server": "^0.14.0",
+    "lodash": "^4.17.11",
+    "request": "^2.88.0",
+    "requestretry": "^3.0.2",
+    "unirest": "^0.5.1",
+    "worker-thread": "^1.1.0"
+  }
+}

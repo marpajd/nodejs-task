@@ -1,0 +1,18 @@
+{
+  "dev1": {
+      "linkGet": "http://www.omdbapi.com/?t=Suits&apikey=d48d341b",
+      "mockbin": "http://mockbin.com/request",
+      "numOfAttempts": 3,
+       "delayTime": 2000,
+       "workerTime":4000
+  },
+  "test1": {
+      "linkGet": "http://www.omdbapi.com/?t=Suits&apikey=d48d341b",
+      "mockbin": "http://mockbin.com/request",
+      "numOfAttempts": 6,
+      "delayTime": 6000,
+      "workerTime": 3000
+  }
+}
+
+ 
