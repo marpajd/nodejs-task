@@ -10,7 +10,15 @@ module.exports = {
     "rules": {
         "indent": [
             "error",
-            "tab"
+            4
+        ],
+        "semi": [
+            "error",
+            "always"
+        ],
+        "quotes": [
+            "error", "single", 
+            { "avoidEscape": true, "allowTemplateLiterals": true }
         ],
     }
 };
