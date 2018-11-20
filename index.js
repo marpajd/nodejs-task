@@ -1,9 +1,9 @@
-const request = require('requestretry');
+const requestRetry = require('requestretry');
 const requestPost = require('request');
 const express = require('express');
 const configuration = require('./config/config.js');
 const app = express();
-
+const helperFunction=require('./helperFunction');
 
 const apiEndpoint= configuration.envConfig.linkGet;
 const postEndpoint = configuration.envConfig.mockbin;
@@ -13,26 +13,14 @@ const workerTime = configuration.envConfig.workerTime;
 
 let intervalFunction = setInterval(function () { 
     console.log("========================GET method==============================");
-     function myRetryStrategy(error, res, body) {
-        console.log("URL: ", apiEndpoint);
-        console.log("res: ", res.statusCode);
-
-        if (error || res.statusCode === 404) {
-            console.log("err || response.statusCode === 404: ", error || res.statusCode === 404);
-
-            return new Error("Error! Smtng went wrong");
-        } else {
-            return null;
-        }
-    }
-    request({
+    requestRetry({
         url: apiEndpoint,
         json: true,
         attempts: numOfAttempts,
         retryDelay: delayTime,
-        retryStrategy: myRetryStrategy
+        retryStrategy: helperFunction.myRetryStrategy
     }, (error, res, body) => {
-        let myError = myRetryStrategy(error, res, body);
+        let myError = helperFunction.myRetryStrategy(error, res, body);
         if (myError) {
             return console.log("In if: ", myError);
         }
@@ -43,7 +31,7 @@ let intervalFunction = setInterval(function () {
             return body;
         }
     });
- }, workerTime);      
+}, workerTime);      
 
 /********POST method******/
 requestPost.post({
@@ -60,5 +48,4 @@ requestPost.post({
     console.log("\nPost method content: \n", body);
 });
 
-module.exports = request;
 
