@@ -1,8 +1,5 @@
-//const _ = require('lodash');
-const config = require('./default.json');
-const environment = process.env.NODE_ENV || 'dev1';
-const environmentConfig = config[environment];
-const envConfig=environmentConfig;
+const config = require ('config');
+const environment = config.get(process.env.NODE_ENV || 'dev1');
 
-console.log("========================CONFIGURATION===================== \n\n ", envConfig);
-module.exports.envConfig=envConfig;
+console.log("========================ENVIRONMENT===================== \n\n ", environment);
+module.exports.environment=environment;
