@@ -20,5 +20,6 @@ module.exports = {
             "error", "single", 
             { "avoidEscape": true, "allowTemplateLiterals": true }
         ],
+        "no-console": 0,
     }
 };

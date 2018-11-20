@@ -1,12 +1,14 @@
 const requestRetry = require('requestretry');
 const request = require('request');
-const configuration = require('./config/config.js');
+const config = require('config');
+/* const configuration = require('./config/config.js'); */
 const helperFunction=require('./helperFunction');
+const data = config.get('configuration');
 
-const apiEndpoint= configuration.environment.linkGet;
-const postEndpoint = configuration.environment.mockbin;
-const numOfAttempts = configuration.environment.numOfAttempts;
-const delayTime = configuration.environment.delayTime;
+const apiEndpoint= data.linkGet;
+const postEndpoint = data.mockbin;
+const numOfAttempts = data.numOfAttempts;
+const delayTime = data.delayTime;
 
 console.log('========================GET method==============================');
 requestRetry({
