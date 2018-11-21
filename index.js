@@ -21,7 +21,7 @@ requestRetry({
     if (myError) {
         return console.log('In if: ', myError);
     }  
-    if (res) {
+    else {
         console.log('The number of request attempts: ', res.maxAttempts);
         console.log('Get method status code: ', res.statusCode); 
         console.log('Get method content:\n', body); 
@@ -34,12 +34,14 @@ request.post({
     headers: { 'content-type': 'application/x-www-form-urlencoded'},
     url: postEndpoint,
     body: 'message=test test'
-}, function (error, res, body) {
+}, (error, res, body) => {
     if (error) {
         console.log('Post error', error);
         return error;
     }
-    console.log('=====================POST METHOD=================================');
-    console.log('Post method status code:', res.statusCode);
-    console.log('\nPost method content: \n', body);
+    else {
+        console.log('=====================POST METHOD=================================');
+        console.log('Post method status code:', res.statusCode);
+        console.log('\nPost method content: \n', body);
+    }
 });
