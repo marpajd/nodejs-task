@@ -1,7 +1,6 @@
 const requestRetry = require('requestretry');
 const request = require('request');
 const config = require('config');
-/* const configuration = require('./config/config.js'); */
 const helperFunction=require('./helperFunction');
 const data = config.get('configuration');
 
@@ -18,10 +17,10 @@ requestRetry({
     retryDelay: delayTime,
     retryStrategy: helperFunction.myRetryStrategy
 }, (error, res, body) => {
-    let myError = helperFunction.myRetryStrategy(error, res, body);
+    let myError =  helperFunction.myRetryStrategy(error, res, body);
     if (myError) {
         return console.log('In if: ', myError);
-    }
+    }  
     if (res) {
         console.log('The number of request attempts: ', res.maxAttempts);
         console.log('Get method status code: ', res.statusCode); 
